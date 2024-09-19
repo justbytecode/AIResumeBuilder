@@ -12,31 +12,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FileText } from "lucide-react";
 
-const MovingSparkle = ({ delay = 0 }) => {
-  return (
-    <motion.div
-      className="absolute w-1 h-1 bg-purple-400 rounded-full"
-      initial={{
-        opacity: 0,
-        scale: 0,
-        x: Math.random() * 100 - 50,
-        y: Math.random() * 100 - 50,
-      }}
-      animate={{
-        opacity: [0, 1, 0],
-        scale: [0, 1, 0],
-        x: Math.random() * 200 - 100,
-        y: Math.random() * 200 - 100,
-      }}
-      transition={{
-        duration: 2,
-        repeat: Infinity,
-        delay: delay,
-      }}
-    />
-  );
-};
-
 const Sparkle = ({ size, color, style }: any) => (
   <motion.div
     style={{

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { FileText } from "lucide-react";
 import ImportResume from "../resume-import/page";
@@ -42,8 +42,6 @@ const SparkleBackground = () => {
 };
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState("create");
-
   const navItems = ["Features", "Pricing", "About"];
 
   const listVariants = {
@@ -61,7 +59,7 @@ export default function Dashboard() {
   useEffect(() => {
     // Redirect to dashboard if user is authenticated
     if (session?.user) {
-      router.push("/");
+      router.push("/dashboard");
     }
   }, [session, router]);
 
@@ -126,10 +124,7 @@ export default function Dashboard() {
         {/* Two Buttons Section */}
         <div className="bg-gray-800 py-5 mt-7">
           <div className="container mx-auto flex justify-center space-x-4">
-            {[
-              ["/resume-builder", "Builder"],
-              ["/resume-parser", "Parser"],
-            ].map(([href, text]) => (
+            {[["/resume-builder", "Builder"], ["/resume-parser", "Parser"]].map(([href, text]) => (
               <Link
                 key={text}
                 className="rounded-md px-2 py-2 text-white hover:bg-gray-900 focus-visible:bg-gray-100 lg:px-4"

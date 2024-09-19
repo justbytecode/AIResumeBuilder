@@ -8,8 +8,6 @@ import { Button } from "@/components/ui/button";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-
-
 const SparkleBackground = () => {
   const sparkles = Array.from({ length: 50 }).map((_, i) => (
     <Sparkle
@@ -26,8 +24,7 @@ const SparkleBackground = () => {
   return <div className="absolute inset-0 overflow-hidden">{sparkles}</div>;
 };
 
-
-const Sparkle = ({ size, color, style }:any) => (
+const Sparkle = ({ size, color, style }: any) => (
   <motion.div
     style={{
       position: 'absolute',
@@ -47,10 +44,7 @@ const Sparkle = ({ size, color, style }:any) => (
       ease: 'easeInOut',
     }}
   />
-)
-
-
-
+);
 
 const TeamMember = ({ name, role, imageUrl }: any) => (
   <div className="flex flex-col items-center mb-8">
@@ -170,7 +164,7 @@ export default function AboutPage() {
           </p>
           <p className="text-xl mb-6">
             We believe that everyone deserves a chance to showcase their best self to potential employers. Our mission
-            is to empower job seekers with the tools they need to stand out in today's competitive job market.
+            is to empower job seekers with the tools they need to stand out in today&apos;s competitive job market.
           </p>
         </motion.div>
         <motion.div
@@ -181,10 +175,10 @@ export default function AboutPage() {
         >
           <h2 className="text-2xl font-semibold mb-4 text-purple-400">A Message from Our Founder</h2>
           <blockquote className="text-lg italic">
-            "In the age of AI, we're not just building resumes; we're crafting digital representations of human
-            potential. Our technology doesn't replace the human touch – it amplifies it. We're here to help you tell your
+            &quot;In the age of AI, we&apos;re not just building resumes; we&apos;re crafting digital representations of human
+            potential. Our technology doesn&apos;t replace the human touch – it amplifies it. We&apos;re here to help you tell your
             story in a way that resonates in the digital world, opening doors to opportunities you might never have
-            imagined. The future of work is here, and we're excited to be your partner in navigating it."
+            imagined. The future of work is here, and we&apos;re excited to be your partner in navigating it.&quot;
           </blockquote>
           <p className="mt-4 text-right text-purple-400">- S.N Pal - Founder & CEO</p>
         </motion.div>
@@ -203,13 +197,12 @@ export default function AboutPage() {
             />
             <TeamMember
               name="MANI PAL"
-              role="Web-Developers &  AI Developers"
+              role="Web-Developers & AI Developers"
               imageUrl="/pic3.jpg"
             />
           </div>
         </motion.div>
       </div>
-
     </div>
   );
 }

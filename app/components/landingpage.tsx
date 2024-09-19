@@ -7,7 +7,7 @@ import Link from "next/link";
 import { SignInButton, SignOutButton, useAuth, UserButton } from "@clerk/nextjs";
 
 export default function LandingPage() {
-  const navItems = ["Features", "Pricing","About"];
+  const navItems = ["Features", "Pricing", "About"];
 
   const listVariants = {
     hidden: { opacity: 0, y: -20 },
@@ -17,10 +17,9 @@ export default function LandingPage() {
   const itemVariants = {
     hover: { scale: 1.1 },
   };
- 
 
   const { isSignedIn } = useAuth();
-  
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
       <header className="container mx-auto px-4 py-8">
@@ -42,8 +41,8 @@ export default function LandingPage() {
           >
             {navItems.map((item) => (
               <motion.li key={item} variants={itemVariants} whileHover="hover">
-                <Link href={`/${item.toLowerCase()}`}  className="text-gray-300 text-2xl font-bold hover:text-purple-400 transition-colors" passHref>
-                    {item}  
+                <Link href={`/${item.toLowerCase()}`} className="text-gray-300 text-2xl font-bold hover:text-purple-400 transition-colors" passHref>
+                  {item}
                 </Link>
               </motion.li>
             ))}
@@ -54,25 +53,24 @@ export default function LandingPage() {
             transition={{ duration: 0.5 }}
           >
             {!isSignedIn ? (
-        <SignInButton>
-          <Button
-            variant="outline"
-            className="mr-2 border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
-          >
-            Log In
-          </Button>
-        </SignInButton>
-      ) : (
-        <>
-          <UserButton />
-          <SignOutButton>
-            <Button className="bg-purple-500 hover:bg-purple-600 text-white">
-              Log Out
-            </Button>
-          </SignOutButton>
-        </>
-      )}
-    
+              <SignInButton>
+                <Button
+                  variant="outline"
+                  className="mr-2 border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
+                >
+                  Log In
+                </Button>
+              </SignInButton>
+            ) : (
+              <>
+                <UserButton />
+                <SignOutButton>
+                  <Button className="bg-purple-500 hover:bg-purple-600 text-white">
+                    Log Out
+                  </Button>
+                </SignOutButton>
+              </>
+            )}
           </motion.div>
         </nav>
       </header>
@@ -123,22 +121,22 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Link href={"/dashboard"} >
-              <Button
-                size="lg"
-                className="mr-4 bg-purple-500 hover:bg-purple-600 text-white"
-              >
-                Get Started for Free
-              </Button>
+              <Link href={"/dashboard"}>
+                <Button
+                  size="lg"
+                  className="mr-4 bg-purple-500 hover:bg-purple-600 text-white"
+                >
+                  Get Started for Free
+                </Button>
               </Link>
               <Link href={"/features"}>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
-              >
-                View Features
-              </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
+                >
+                  View Features
+                </Button>
               </Link>
             </motion.div>
           </motion.div>
@@ -176,7 +174,7 @@ export default function LandingPage() {
                     description:
                       "Get your polished resume ready to impress employers",
                   },
-                ].map((step, index) => (
+                ].map((step) => (
                   <motion.div
                     key={step.title}
                     className="text-center"
@@ -301,7 +299,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
                 <Star className="h-6 w-6 text-yellow-400 mb-4" />
-                <p className="text-gray-300 mb-4">"{testimonial.quote}"</p>
+                <p className="text-gray-300 mb-4">&quot;{testimonial.quote}&quot;</p>
                 <p className="font-semibold text-purple-300">
                   {testimonial.name}
                 </p>
