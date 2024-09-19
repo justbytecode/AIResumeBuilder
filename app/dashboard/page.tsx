@@ -1,3 +1,4 @@
+// app/dashboard/page.tsx
 "use client";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -59,7 +60,7 @@ export default function Dashboard() {
   useEffect(() => {
     // Redirect to dashboard if user is authenticated
     if (session?.user) {
-      router.push("/dashboard");
+      router.push("/");
     }
   }, [session, router]);
 
