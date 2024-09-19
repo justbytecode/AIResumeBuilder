@@ -14,10 +14,12 @@ export const ProfileForm = () => {
     dispatch(changeProfile({ field, value }));
   };
 
+
+
   return (
-    <div className=" bg-gray-900 text-gray-100">
+    <div className="m-5 p-5 mt-4 bg-gray-900">
       <BaseForm >
-      <div className="grid grid-cols-6 gap-3 ">
+      <div className="grid grid-cols-6  gap-5 ">
         <Input
           label="Name"
           labelClassName="col-span-full"
@@ -25,6 +27,7 @@ export const ProfileForm = () => {
           placeholder="Your Name"
           value={name}
           onChange={handleProfileChange}
+          
         />
         <Input
           label="Objective"
@@ -69,5 +72,7 @@ export const ProfileForm = () => {
       </div>
     </BaseForm>
     </div>
+   
+            
   );
 };

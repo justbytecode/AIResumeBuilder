@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./provider";
 import { cn } from "@/lib/utils";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -28,9 +28,9 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers>
+        <ClerkProvider>
         {children}
-        </Providers>
+        </ClerkProvider>
       </body>
     </html>
   );

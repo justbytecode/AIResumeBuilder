@@ -3,45 +3,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FileText, Zap, Users, Star } from "lucide-react";
-import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-
-const MovingSparkle = ({ delay = 0 }) => {
-  return (
-    <motion.div
-      className="absolute w-1 h-1 bg-purple-400 rounded-full"
-      initial={{
-        opacity: 0,
-        scale: 0,
-        x: Math.random() * 100 - 50,
-        y: Math.random() * 100 - 50,
-      }}
-      animate={{
-        opacity: [0, 1, 0],
-        scale: [0, 1, 0],
-        x: Math.random() * 200 - 100,
-        y: Math.random() * 200 - 100,
-      }}
-      transition={{
-        duration: 2,
-        repeat: Infinity,
-        delay: delay,
-      }}
-    />
-  );
-};
-
-const SparklesBackground = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      {[...Array(50)].map((_, i) => (
-        <MovingSparkle key={i} delay={i * 0.1} />
-      ))}
-    </div>
-  );
-};
+import { SignInButton, SignOutButton, useAuth, UserButton } from "@clerk/nextjs";
 
 export default function LandingPage() {
   const navItems = ["Features", "Pricing","About"];
@@ -54,15 +17,9 @@ export default function LandingPage() {
   const itemVariants = {
     hover: { scale: 1.1 },
   };
-  const { data: session } = useSession();
-  const router = useRouter();
+ 
 
-  useEffect(() => {
-    // Redirect to dashboard if user is authenticated
-    if (session?.user) {
-      router.push("/");
-    }
-  }, [session, router]);
+  const { isSignedIn } = useAuth();
   
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
@@ -85,7 +42,7 @@ export default function LandingPage() {
           >
             {navItems.map((item) => (
               <motion.li key={item} variants={itemVariants} whileHover="hover">
-                <Link href={`/${item.toLowerCase()}`}  className="text-gray-300 font-bold hover:text-purple-400 transition-colors" passHref>
+                <Link href={`/${item.toLowerCase()}`}  className="text-gray-300 text-2xl font-bold hover:text-purple-400 transition-colors" passHref>
                     {item}  
                 </Link>
               </motion.li>
@@ -96,23 +53,26 @@ export default function LandingPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-             {!session?.user ? (
-              <Button
-                onClick={() => signIn()}
-                variant="outline"
-                className="mr-2 border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
-              >
-                Log In
-              </Button>
-            ):
-            (
-              <Button
-                onClick={() => signOut()}
-                className="bg-purple-500 hover:bg-purple-600 text-white"
-              >
-                Log Out
-              </Button>
-            )}
+            {!isSignedIn ? (
+        <SignInButton>
+          <Button
+            variant="outline"
+            className="mr-2 border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
+          >
+            Log In
+          </Button>
+        </SignInButton>
+      ) : (
+        <>
+          <UserButton />
+          <SignOutButton>
+            <Button className="bg-purple-500 hover:bg-purple-600 text-white">
+              Log Out
+            </Button>
+          </SignOutButton>
+        </>
+      )}
+    
           </motion.div>
         </nav>
       </header>
@@ -171,13 +131,15 @@ export default function LandingPage() {
                 Get Started for Free
               </Button>
               </Link>
+              <Link href={"/features"}>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
               >
-                View Templates
+                View Features
               </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </section>

@@ -28,6 +28,7 @@ export const ThemeForm = () => {
   };
 
   return (
+    <div className="bg-gray-900 text-white p-5 m-5 ">
     <BaseForm>
       <div className="flex flex-col gap-6">
         <div className="flex items-center gap-2">
@@ -97,5 +98,6 @@ export const ThemeForm = () => {
         </div>
       </div>
     </BaseForm>
+    </div>
   );
 };

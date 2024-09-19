@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.4.1",
     "@heroicons/react": "^2.1.5",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-radio-group": "^1.2.0",
+    "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "@react-pdf/renderer": "^3.4.4",
@@ -22,7 +24,6 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.3",
     "lucide-react": "^0.438.0",
-    "next": "14.2.8",
     "next-auth": "^4.24.7",
     "pdfjs": "^2.5.3",
     "pdfjs-dist": "^4.6.82",

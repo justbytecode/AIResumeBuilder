@@ -27,7 +27,7 @@ const SECTION_TITLE_KEYWORDS = [
 ];
 
 export const groupLinesIntoSections = (lines: Lines) => {
-  let sections: ResumeSectionToLines = {};
+  const sections: ResumeSectionToLines = {}; // Changed from let to const
   let sectionName: string = PROFILE_SECTION;
   let sectionLines: any = [];
 

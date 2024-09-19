@@ -12,8 +12,8 @@ export const Paragraph = ({
   return (
     <p
       className={cx(
-        smallMarginTop ? "mt-[0.8em]" : "mt-[1.5em]",
-        "text-lg text-gray-700",
+        smallMarginTop ? "mt-[1.8em]" : "mt-[2.5em]",
+        "text-lg text-gray-900",
         className
       )}
     >

@@ -35,6 +35,7 @@ export const SkillsForm = () => {
   };
 
   return (
+    <div className="bg-gray-900 text-white p-5 m-5 ">
     <Form form={form}>
       <div className="col-span-full grid grid-cols-6 gap-3">
         <div className="relative col-span-full">
@@ -80,5 +81,6 @@ export const SkillsForm = () => {
         ))}
       </div>
     </Form>
+    </div>
   );
 };

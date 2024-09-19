@@ -6,7 +6,7 @@ interface InputProps<K extends string, V extends string | string[]> {
 
   name: K;
   value?: V;
-  placeholder: string;
+  placeholder?: string; // Made optional
   onChange: (name: K, value: V) => void;
 }
 
@@ -53,7 +53,6 @@ export const BulletListTextArea = <T extends string>({
   labelClassName: wrapperClassName,
   name,
   value: bulletListStrings = [],
-  placeholder,
   onChange,
   showBulletPoints = true,
 }: InputProps<T, string[]> & {
@@ -68,8 +67,7 @@ export const BulletListTextArea = <T extends string>({
         className={`${INPUT_CLASS_NAME} cursor-text [&>div]:list-item ${
           showBulletPoints ? "pl-7" : "[&>div]:list-['']"
         }`}
-        // placeholder={placeholder}
-        onChange={(e:any) => {
+        onChange={(e: any) => {
           if (e.type === "input") {
             const { innerText } = e.currentTarget as HTMLDivElement;
             const newBulletListStrings =

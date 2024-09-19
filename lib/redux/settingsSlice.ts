@@ -1,5 +1,4 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 import { RootState } from "./store";
 
 export interface Settings {

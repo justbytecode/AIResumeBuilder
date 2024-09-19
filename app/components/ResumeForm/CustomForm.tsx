@@ -1,19 +1,17 @@
 import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
 import {
   changeCustom,
-  changeSkills,
   selectCustom,
-  selectSkills,
 } from "@/lib/redux/resumeSlice";
 import {
   changeShowBulletPoints,
   selectShowBulletPoints,
-  selectThemeColor,
+  
 } from "@/lib/redux/settingsSlice";
 import { Form } from "./Form";
-import { BulletListTextArea, InputGroupWrapper } from "./Form/InputGroup";
+import { BulletListTextArea } from "./Form/InputGroup";
 import { BulletListIconButton } from "./Form/IconButton";
-import { FeaturedSkillInput } from "./Form/FeaturedSkillInput";
+
 
 export const CustomForm = () => {
   const custom = useAppSelector(selectCustom);
@@ -31,6 +29,7 @@ export const CustomForm = () => {
   };
 
   return (
+    <div className="bg-gray-900 text-white p-5 m-5 ">
     <Form form={form}>
       <div className="col-span-full grid grid-cols-6 gap-3">
         <div className="relative col-span-full">
@@ -52,5 +51,6 @@ export const CustomForm = () => {
         </div>
       </div>
     </Form>
+    </div>
   );
 };

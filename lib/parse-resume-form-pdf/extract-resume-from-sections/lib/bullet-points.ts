@@ -15,7 +15,7 @@ export const BULLET_POINTS = [
 
 const getFirstBulletPointLineIdx = (lines: Lines): number | undefined => {
   for (let i = 0; i < lines.length; i++) {
-    for (let item of lines[i]) {
+    for (const item of lines[i]) { // Changed from let to const
       if (BULLET_POINTS.some((bullet) => item.text.includes(bullet))) {
         return i;
       }
@@ -53,7 +53,7 @@ export const getBulletPointsFromLines = (lines: Lines): string[] => {
   }
 
   let lineStr = "";
-  for (let item of lines.flat()) {
+  for (const item of lines.flat()) { // Changed from let to const
     const text = item.text;
 
     if (!lineStr.endsWith(" ") && !text.startsWith(" ")) {
@@ -85,12 +85,13 @@ const getMostCommonBulletPoint = (str: string): string => {
   );
 
   let bulletWithMostCount = BULLET_POINTS[0];
-  let bulletMaxCount = 0;
-  for (let char of str) {
+  let bulletMaxCount = 0; // Changed from let to const
+  for (const char of str) { // Changed from let to const
     if (bulletToCount.hasOwnProperty(char)) {
       bulletToCount[char]++;
       if (bulletToCount[char] > bulletMaxCount) {
         bulletWithMostCount = char;
+        bulletMaxCount = bulletToCount[char]; // Updated max count
       }
     }
   }

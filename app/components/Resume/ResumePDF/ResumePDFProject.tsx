@@ -1,7 +1,5 @@
 import {
-    ResumeEducation,
-    ResumeProject,
-    ResumeWorkExperience,
+    ResumeProject,   
   } from "@/lib/redux/types";
   import { ResumePDFBulletList, ResumePDFSection, ResumePDFText } from "./common";
   import { View } from "@react-pdf/renderer";

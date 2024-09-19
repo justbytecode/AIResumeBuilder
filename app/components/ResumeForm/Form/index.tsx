@@ -15,7 +15,6 @@ import {
   LightBulbIcon,
   WrenchIcon,
 } from "@heroicons/react/24/outline";
-import { Input } from "./InputGroup";
 import { DeletIconButton, MoveIconButton, ShowIconButton } from "./IconButton";
 import { ExpanderWithHeightTransition } from "../../ExpanderWithHeightTransition";
 import {

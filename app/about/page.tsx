@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import image from "next/image";
 import Link from "next/link";
 import { FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,40 +26,6 @@ const SparkleBackground = () => {
   return <div className="absolute inset-0 overflow-hidden">{sparkles}</div>;
 };
 
-const MovingSparkle = ({ delay = 0 }) => {
-  return (
-    <motion.div
-      className="absolute w-1 h-1 bg-purple-400 rounded-full"
-      initial={{
-        opacity: 0,
-        scale: 0,
-        x: Math.random() * 100 - 50,
-        y: Math.random() * 100 - 50,
-      }}
-      animate={{
-        opacity: [0, 1, 0],
-        scale: [0, 1, 0],
-        x: Math.random() * 200 - 100,
-        y: Math.random() * 200 - 100,
-      }}
-      transition={{
-        duration: 2,
-        repeat: Infinity,
-        delay: delay,
-      }}
-    />
-  );
-};
-
-const SparklesBackground = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      {[...Array(50)].map((_, i) => (
-        <MovingSparkle key={i} delay={i * 0.1} />
-      ))}
-    </div>
-  );
-};
 
 const Sparkle = ({ size, color, style }:any) => (
   <motion.div

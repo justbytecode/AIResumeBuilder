@@ -6,7 +6,6 @@ import { selectSettings } from "@/lib/redux/settingsSlice";
 import { useMemo, useState } from "react";
 import { FlexboxSpacer } from "../flexboxSpacer";
 import { ResumeIFrameCSR } from "./ResumeIFrame";
-import { ResumePDFProfile } from "./ResumePDF/ResumePDFProfile";
 import { ResumePDF } from "./ResumePDF";
 import {
   useRegisterReactPDFFont,
@@ -29,7 +28,7 @@ export const Resume = () => {
   return (
     <>
       <div className="relative  bg-gray-900 text-gray-100 flex justify-center md:justify-start">
-        <FlexboxSpacer maxWidth={50} className="hidden md:block" />
+        <FlexboxSpacer maxWidth={200} className="hidden md:block" />
         <div className="relative">
           <section className="h-[calc(100vh-var(--top-nav-bar-height)-var(--resume-control-bar-height))] overflow-hidden md:p-[var(--resume-padding)]">
             <ResumeIFrameCSR

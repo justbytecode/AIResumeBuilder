@@ -21,7 +21,8 @@ export const EducationsForm = () => {
   const showBulletPoints = useAppSelector(selectShowBulletPoints(form));
 
   return (
-    <Form form={form} addButtonText="Add School">
+    <div className="bg-gray-900 text-white p-5 m-5 ">
+    <Form form={form} addButtonText="Add School ">
       {educations.map(({ school, degree, gpa, date, descriptions }, idx) => {
         const handleWorkExperienceChange = (
           ...[
@@ -86,7 +87,7 @@ export const EducationsForm = () => {
                 label="Additional Information (Optional)"
                 labelClassName="col-span-full"
                 name="descriptions"
-                placeholder="Feel free to enter additional activities and so on..."
+                placeholder="Feel free to enter additional activities "
                 value={descriptions}
                 onChange={handleWorkExperienceChange}
                 showBulletPoints={showBulletPoints}
@@ -102,5 +103,6 @@ export const EducationsForm = () => {
         );
       })}
     </Form>
+    </div>
   );
 };

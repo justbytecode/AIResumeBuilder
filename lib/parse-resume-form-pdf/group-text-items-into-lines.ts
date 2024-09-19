@@ -4,7 +4,7 @@ export const groupTextItemsIntoLines = (textItems: TextItems): Lines => {
   const lines: Lines = [];
 
   let line: Line = [];
-  for (let item of textItems) {
+  for (const item of textItems) {  // Use `const` here
     if (item.hasEOL) {
       if (item.text.trim() !== "") {
         line.push({ ...item });
@@ -21,7 +21,7 @@ export const groupTextItemsIntoLines = (textItems: TextItems): Lines => {
 
   const typicalCharWidth = getTypicalCharWidth(lines.flat());
 
-  for (let line of lines) {
+  for (const line of lines) { // Use `const` here
     for (let i = line.length - 1; i > 0; i--) {
       const currentItem = line[i];
       const leftItem = line[i - 1];
@@ -65,7 +65,7 @@ const getTypicalCharWidth = (textItems: TextItems): number => {
   let commonFontName = "";
   let fontNameMaxCount = 0;
 
-  for (let item of textItems) {
+  for (const item of textItems) { // Use `const` here
     const { text, height, fontName } = item;
 
     if (!heightToCount[height]) {

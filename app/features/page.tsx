@@ -1,11 +1,11 @@
 'use client'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { FileText, Zap, Users, Star, Sparkles, BarChart, Lock, Globe, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 
-const FeatureCard = ({ icon: Icon, title, description }:any) => {
+const FeatureCard = ({ icon: Icon, title, description }: any) => {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -73,7 +73,7 @@ export default function FeaturePage() {
             transition={{ duration: 0.5 }}
           >
             <Link href="/">
-            <FileText className="h-10 w-10 text-purple-500" />
+              <FileText className="h-10 w-10 text-purple-500" />
             </Link>
           </motion.div>
           <motion.ul
@@ -84,7 +84,7 @@ export default function FeaturePage() {
           >
             {['Features', 'Pricing', 'About'].map((item) => (
               <motion.li key={item} whileHover={{ scale: 1.1 }}>
-                <Link href={`/${item.toLowerCase()}`} className="text-gray-300 hover:text-purple-400 transition-colors">
+                <Link href={`/${item.toLowerCase()}`} className="text-gray-300 text-2xl hover:text-purple-400 transition-colors">
                   {item}
                 </Link>
               </motion.li>
@@ -96,7 +96,7 @@ export default function FeaturePage() {
             transition={{ duration: 0.5 }}
           >
             <Link href={'/dashboard'}>
-               <Button className="bg-purple-600 hover:bg-purple-700 text-white">Try for Free</Button>
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white">Try for Free</Button>
             </Link>
           </motion.div>
         </nav>
@@ -127,13 +127,18 @@ export default function FeaturePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Button
-                className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg"
-                whileHover={{ scale: 1.05 }}   // Ask In the Meeting (Meeting Problem)
+              <motion.div
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Start Building Now
-              </Button>
+                <Link href="/dashboard">
+                  <Button
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg"
+                  >
+                    Start Building Now
+                  </Button>
+                </Link>
+              </motion.div>
             </motion.div>
           </div>
         </motion.section>
@@ -239,7 +244,7 @@ export default function FeaturePage() {
                 whileHover={{ scale: 1.05 }}
               >
                 <Star className="h-6 w-6 text-yellow-400 mb-4" />
-                <p className="text-gray-300 mb-4">"{testimonial.quote}"</p>
+                <p className="text-gray-300 mb-4">&quot;{testimonial.quote}&quot;</p>
                 <p className="font-semibold text-purple-300">{testimonial.name}</p>
                 <p className="text-sm text-gray-400">{testimonial.role}</p>
               </motion.div>
@@ -253,18 +258,24 @@ export default function FeaturePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold mb-6 text-purple-400">Ready to Build Your Perfect Resume?</h2>
+          <h2 className="text-3xl font-bold mb-6 text-purple-400">
+            Ready to Build Your Perfect Resume?
+          </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Join thousands of job seekers who have successfully landed their dream jobs using our AI-powered platform.
           </p>
-          <Button
-            size="lg"
-            className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg"
-            whileHover={{ scale: 1.05 }} // Ask In the Meeting 
+          
+          <motion.div
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get Started for Free
-          </Button>
+            <Button
+              size="lg"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg"
+            >
+              Get Started for Free
+            </Button>
+          </motion.div>
         </motion.section>
       </main>
 

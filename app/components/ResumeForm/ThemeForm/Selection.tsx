@@ -103,7 +103,7 @@ export const FontSizeSelections = ({
   const compactSizePt = standardSizePt - 1;
 
   return (
-    <SelectionsWrapper>
+    <SelectionsWrapper >
       {["Compact", "Standard", "Large"].map((type, idx) => {
         const fontSizePt = String(compactSizePt + idx);
         const isSelected = fontSizePt === selectedFontSize;
@@ -146,10 +146,10 @@ export const DocumentSizeSelections = ({
             isSelected={type === selectedDocumentSize}
             onClick={() => handleSettingsChange("documentSize", type)}
           >
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col justify-center items-center">
               <div>{type}</div>
               <div className="text-xs">
-                {type === "Letter" ? "(US, Canada)" : "(India, Other Countries)"}
+                {type === "Letter" ? "(US, Canada)" : "(India, O.Countries)"}
               </div>
             </div>
           </SelectionComponent>

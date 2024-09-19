@@ -19,11 +19,12 @@ export const useSaveStateToLocalStorageOnChange = () => {
       saveStateToLocalStorage(store.getState());
     });
     return unsubscribe;
-  }, []);
+  }, []); // No dependencies needed here since store is static
 };
 
 export const useSetInitialStore = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch(); // Using `dispatch`
+
   useEffect(() => {
     const state = loadStateFromLocalStorage();
     if (!state) return;
@@ -41,5 +42,5 @@ export const useSetInitialStore = () => {
       ) as Settings;
       dispatch(setSettings(mergedSettingsState));
     }
-  }, []);
+  }, [dispatch]); // Add `dispatch` as a dependency
 };

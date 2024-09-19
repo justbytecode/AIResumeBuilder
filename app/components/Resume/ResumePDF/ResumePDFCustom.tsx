@@ -1,16 +1,15 @@
 import {
     ResumeCustom,
-    ResumeSkills,
-    ResumeWorkExperience,
+   
   } from "@/lib/redux/types";
   import {
-    ResumeFeaturedSkill,
+    
     ResumePDFBulletList,
     ResumePDFSection,
-    ResumePDFText,
+    
   } from "./common";
   import { View } from "@react-pdf/renderer";
-  import { spacing, styles } from "./style";
+  import {  styles } from "./style";
   
   export const ResumePDFCustom = ({
     heading,

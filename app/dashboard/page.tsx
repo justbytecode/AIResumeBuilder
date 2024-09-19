@@ -1,21 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
-import { Download, Share2, Plus, FileText, Settings, User } from "lucide-react";
+import { FileText } from "lucide-react";
 import ImportResume from "../resume-import/page";
-import { FlexboxSpacer } from "../components/flexboxSpacer";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -46,53 +33,13 @@ const MovingSparkle = ({ delay = 0 }) => {
   );
 };
 
-const SparklesBackground = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      {[...Array(50)].map((_, i) => (
-        <MovingSparkle key={i} delay={i * 0.1} />
-      ))}
-    </div>
-  );
-};
-
-const Sparkle = ({ size, color, style }:any) => (
-  <motion.div
-    style={{
-      position: 'absolute',
-      width: size,
-      height: size,
-      borderRadius: '50%',
-      backgroundColor: color,
-      ...style,
-    }}
-    animate={{
-      y: ['0%', '100%'],
-      opacity: [0, 1, 0],
-    }}
-    transition={{
-      duration: Math.random() * 2 + 1,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    }}
-  />
-)
-
 const SparkleBackground = () => {
   const sparkles = Array.from({ length: 50 }).map((_, i) => (
-    <Sparkle
-      key={i}
-      size={Math.random() * 4 + 1}
-      color={`hsl(${Math.random() * 360}, 100%, 75%)`}
-      style={{
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-      }}
-    />
-  ))
+    <MovingSparkle key={i} delay={i * 0.1} />
+  ));
 
-  return <div className="absolute inset-0 overflow-hidden pointer-events-none">{sparkles}</div>
-}
+  return <div className="absolute inset-0 overflow-hidden pointer-events-none">{sparkles}</div>;
+};
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("create");
@@ -107,6 +54,7 @@ export default function Dashboard() {
   const itemVariants = {
     hover: { scale: 1.1 },
   };
+
   const { data: session } = useSession();
   const router = useRouter();
 
@@ -129,7 +77,7 @@ export default function Dashboard() {
             transition={{ duration: 0.5 }}
           >
             <Link href={"/"}>
-              <FileText className="h-10 w-10 text-purple-500" />
+              <FileText className="h-10 m-5 w-10 text-purple-500" />
             </Link>
           </motion.div>
           <motion.ul
@@ -142,7 +90,7 @@ export default function Dashboard() {
               <motion.li key={item} variants={itemVariants} whileHover="hover">
                 <Link
                   href={`/${item.toLowerCase()}`}
-                  className="text-gray-300 font-bold hover:text-purple-400 transition-colors"
+                  className="text-gray-300 text-2xl font-bold hover:text-purple-400 transition-colors"
                   passHref
                 >
                   {item}
@@ -160,14 +108,14 @@ export default function Dashboard() {
               <Button
                 onClick={() => signIn()}
                 variant="outline"
-                className="mr-2 border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
+                className="mr-2 border-purple-500 m-5 text-purple-500 hover:bg-purple-500 hover:text-white"
               >
                 Log In
               </Button>
             ) : (
               <Button
                 onClick={() => signOut()}
-                className="bg-purple-500 hover:bg-purple-600 text-white"
+                className="bg-purple-500 m-5 hover:bg-purple-600 text-white"
               >
                 Log Out
               </Button>
@@ -175,38 +123,30 @@ export default function Dashboard() {
           </motion.div>
         </nav>
 
-
         {/* Two Buttons Section */}
         <div className="bg-gray-800 py-5 mt-7">
           <div className="container mx-auto flex justify-center space-x-4">
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white">
-      {[
-         ["/resume-builder", "Builder"],
-         ["/resume-parser", "Parser"],
-       ].map(([href, text]) => (
-         <Link
-           key={text}
-           className="rounded-md px-2 py-2 text-white hover:bg-gray-900 focus-visible:bg-gray-100 lg:px-4"
-           href={href}
-         >
-           {text}
-         </Link>
-       ))}
-
-      </Button>
+            {[
+              ["/resume-builder", "Builder"],
+              ["/resume-parser", "Parser"],
+            ].map(([href, text]) => (
+              <Link
+                key={text}
+                className="rounded-md px-2 py-2 text-white hover:bg-gray-900 focus-visible:bg-gray-100 lg:px-4"
+                href={href}
+              >
+                {text}
+              </Link>
+            ))}
           </div>
         </div>
 
         {/* Hero Section */}
         <section className="py-20">
           <div className="container mx-auto px-4 text-center">
-           
-          <ImportResume />
+            <ImportResume />
           </div>
         </section>
-
-       
-
       </div>
     </div>
   );

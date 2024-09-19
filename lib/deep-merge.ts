@@ -1,10 +1,10 @@
-type Object = { [key: string]: any };
+type GenericObject = { [key: string]: any }; // Rename the custom type to avoid conflict with `Object`
 
-const isObject = (item: any): item is Object => {
+const isObject = (item: any): item is object => {
   return item && typeof item === "object" && !Array.isArray(item);
 };
 
-export const deepMerge = (target: Object, source: Object, level = 0) => {
+export const deepMerge = (target: GenericObject, source: GenericObject, level = 0) => {
   const copyTarget = level === 0 ? structuredClone(target) : target;
 
   for (const key in source) {
